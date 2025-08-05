@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    container_name: banco-nutrismarter
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nutrismarter
+    ports:
+      - "54321:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
