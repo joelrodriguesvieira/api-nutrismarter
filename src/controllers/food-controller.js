@@ -5,11 +5,11 @@ const router = express.Router();
 
 // Buscar alimentos por nome
 router.get('/search', async (req, res) => {
-  const { q } = req.query;
-  if (!q) return res.status(400).json({ error: 'Parâmetro "q" é obrigatório' });
+  const { foodName } = req.query;
+  if (!q) return res.status(400).json({ error: 'Parâmetro "nome" é obrigatório' });
 
   try {
-    const foods = await getFoodbyName(q);
+    const foods = await getFoodbyName(foodName);
     res.json(foods);
   } catch (error) {
     console.error('Erro ao buscar alimentos:', error);
