@@ -20,6 +20,7 @@ model Food {
   type      String      // ex: "fruta", "leguminosa"
   kcal      Float
   createdAt DateTime    @default(now())
+  imageUrl  String
 
   shifts    FoodShift[]
   foodMeals FoodMeal[]
