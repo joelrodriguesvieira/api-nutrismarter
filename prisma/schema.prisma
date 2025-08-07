@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
   provider = "prisma-client-js"
@@ -14,15 +9,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum FoodType {
+  Frutas
+  Proteinas
+  Verduras
+  Leguminosas
+  Cereais
+  Graos
+  Laticinios
+  Oleaginosas
+  Chas
+}
+
 model Food {
   id        String      @id @default(uuid())
   name      String
-  type      String      // ex: "fruta", "leguminosa"
+  type      FoodType
   kcal      Float
   createdAt DateTime    @default(now())
   imageUrl  String
-
-  shifts    FoodShift[]
   foodMeals FoodMeal[]
 }
 
@@ -30,32 +35,14 @@ model Meal {
   id        String       @id @default(uuid())
   title     String
   createdAt DateTime     @default(now())
-
   foodMeals FoodMeal[]
-}
-
-model Shift {
-  id    String      @id @default(uuid())
-  name  String      @unique              // ex: "café da manhã", "almoço"
-  foods FoodShift[]
-}
-
-model FoodShift {
-  id      String   @id @default(uuid())
-  foodId  String
-  shiftId String
-
-  food    Food     @relation(fields: [foodId], references: [id])
-  shift   Shift    @relation(fields: [shiftId], references: [id])
-
-  @@unique([foodId, shiftId])
 }
 
 model FoodMeal {
   id        String   @id @default(uuid())
   foodId    String
   mealId    String
-  quantity  Float    // ✔️ Quantidade usada nessa refeição (em gramas, por exemplo)
+  quantity  Float
 
   food      Food     @relation(fields: [foodId], references: [id])
   meal      Meal     @relation(fields: [mealId], references: [id])

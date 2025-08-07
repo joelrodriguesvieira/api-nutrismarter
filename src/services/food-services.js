@@ -20,11 +20,28 @@ export async function getFoodbyName(name) {
   }
 }
 
+export async function getFoodsByTypes(types) {
+  try {
+    const foods = await prisma.food.findMany({
+      where: {
+        type: { in: types },
+      },
+      orderBy: {
+        name: 'asc',
+      },
+    });
+    return foods;
+  } catch (error) {
+    console.error('Erro ao buscar alimentos por tipo:', error);
+    throw new Error('Erro interno ao buscar alimentos por tipo');
+  }
+}
+
 // Buscar substituições de alimentos pelo ID
 export async function getSubstitutesById(id) {
   try {
     const original = await prisma.food.findUnique({
-      where: { id: Number(id) }
+      where: { id }
     })
 
     if (!original) return null
