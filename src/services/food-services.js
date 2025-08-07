@@ -1,5 +1,6 @@
-import { PrismaClient } from '../generated/prisma/index.js';
-const prisma = new PrismaClient();
+import { PrismaClient } from '../generated/prisma/index.js'
+
+const prisma = new PrismaClient()
 
 // Buscar alimentos pelo nome
 export async function getFoodbyName(name) {
