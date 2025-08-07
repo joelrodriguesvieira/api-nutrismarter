@@ -1,54 +1,54 @@
 # 🥗 API NutriSmarter 
 
-API desenvolvida em Node.js com Express e Prisma ORM para gerenciamento de refeições e suas informações nutricionais.
+API developed in Node.js with Express and Prisma ORM for managing meals and their nutritional information.
 
 ---
 
-## 📋 Funcionalidades
+## 📋 Features
 
-- Listagem de alimentos
-- Filtro por nome
-- Organização por categoria (frutas, vegetais, laticínios, etc.)
-
----
-
-## ⚙️ Requisitos
-
-- [Node.js](https://nodejs.org/) v18 ou superior  
-- [PostgreSQL](https://www.postgresql.org/) v15 ou superior  
+- Food list
+- Filter by name
+- Sort by category (fruits, vegetables, dairy, etc.)
 
 ---
 
-## 🛠️ Instalação e Configuração
+## ⚙️ Requirements
 
-### 1. Clone o repositório
+- [Node.js](https://nodejs.org/) v18 or higher
+- [PostgreSQL](https://www.postgresql.org/) v15 or higher
+
+---
+
+## 🛠️ Installation and Configuration
+
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/joelrodriguesvieira/api-nutrismarter.git
 cd api-nutrismarter
 ```
-### 2. Instale as dependências
+### 2. Install the dependencies
 
 ```bash
 npm install
 ```
-### 3. Configure as variáveis de ambiente
+### 3. Configure environment variables
 Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
 ```bash
 DATABASE_URL="postgresql://usuario:senha@localhost:5432/nutrismarter"
 PORT=3000
 ```
-### 4. Crie o banco no PostgreSQL
+### 4. Create the database in PostgreSQL
 ```bash
 CREATE DATABASE nutrismarter
 ```
-### 5. Gere os arquivos do Prisma
+### 5. Generate the Prisma files
 ```bash
 npx prisma generate
 ```
-### 6. Execute a API
+### 6. Run the API
 ```bash
 npm run dev
 ```
-A API será executada em:
+A API will be up at:
 📍 `http://localhost:3000`
